@@ -12,14 +12,23 @@
       <sprite>sprites\spr_player_down</sprite>
       <sprite>sprites\spr_player_side</sprite>
       <sprite>sprites\spr_player_attack_side</sprite>
+      <sprite>sprites\spr_player_attack_up</sprite>
+      <sprite>sprites\spr_player_attack_down</sprite>
+    </sprites>
+    <sprites name="items">
+      <sprite>sprites\spr_sword</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\check_inputs_all.gml</script>
+  </scripts>
   <objects name="objects">
     <object>objects\obj_game</object>
     <object>objects\obj_player</object>
     <object>objects\Input</object>
+    <object>objects\obj_sword</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_test</room>
