@@ -18,17 +18,43 @@
     <sprites name="items">
       <sprite>sprites\spr_sword</sprite>
     </sprites>
+    <sprites name="masks">
+      <sprite>sprites\spr_wall_mask</sprite>
+    </sprites>
+    <sprites name="enemies">
+      <sprites name="overworld">
+        <sprite>sprites\spr_octorok</sprite>
+        <sprite>sprites\spr_projectile</sprite>
+      </sprites>
+      <sprite>sprites\spr_enemy_death</sprite>
+    </sprites>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\bg_overworld_green</background>
+  </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\check_inputs_all.gml</script>
+    <script>scripts\init_game.gml</script>
+    <script>scripts\check_collision_obj.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_game</object>
     <object>objects\obj_player</object>
     <object>objects\Input</object>
     <object>objects\obj_sword</object>
+    <objects name="walls">
+      <object>objects\obj_solid</object>
+      <object>objects\obj_wall_top</object>
+    </objects>
+    <objects name="enemies">
+      <objects name="overworld">
+        <object>objects\obj_projectile</object>
+        <object>objects\obj_octorok</object>
+      </objects>
+      <object>objects\obj_enemy_death</object>
+      <object>objects\obj_par_enemy</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_test</room>

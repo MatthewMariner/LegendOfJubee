@@ -171,8 +171,8 @@ switch (state) {
 
 }
 
-x += vx;
-y += vy;
+//Check For Collision
+check_collision_obj(vx, vy, obj_solid);
 </string>
           </argument>
         </arguments>
