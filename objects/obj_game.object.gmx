@@ -37,6 +37,39 @@ instance_create(0,0,Input);
         </arguments>
       </action>
     </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//manipulate views from rooms
+// Div func = division w/o remainder
+// Since rooms are 256 wide - if you div by 256 the remainder = 0
+// multiply 0 by 256 - which snaps X coordinate to the top left of the room
+// same with vertical view
+target_xview = (obj_player.x div 256) * 256;
+target_yview = (obj_player.y div 176) * 176;
+
+//Accesses move_toward() script
+view_xview[0] = move_toward(view_xview[0],target_xview,4);
+view_yview[0] = move_toward(view_yview[0],target_yview,4);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
   </events>
   <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>

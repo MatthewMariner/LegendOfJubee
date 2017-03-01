@@ -31,12 +31,15 @@
   </sprites>
   <backgrounds name="background">
     <background>background\bg_overworld_green</background>
+    <background>background\bg_temp</background>
+    <background>background\bg_temp_menu</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\check_inputs_all.gml</script>
     <script>scripts\init_game.gml</script>
     <script>scripts\check_collision_obj.gml</script>
+    <script>scripts\move_toward.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_game</object>
@@ -57,6 +60,7 @@
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_rooms</room>
     <room>rooms\rm_test</room>
   </rooms>
   <help>
