@@ -62,6 +62,7 @@ up = keyboard_check(vk_up);
 down = keyboard_check(vk_down);
 button_b = keyboard_check_pressed(vk_enter);
 button_a = keyboard_check_pressed(vk_space);
+start = keyboard_check_pressed(vk_control);
 </string>
           </argument>
         </arguments>

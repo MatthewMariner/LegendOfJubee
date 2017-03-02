@@ -25,8 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-init_game();
+            <string>init_game();
+
+state = "IN_LEVEL";
+menu_open = false;
+
+
 scale = 4;
 window_set_size(window_get_width() * scale, window_get_height() * scale);
 window_set_position(200, 100);
@@ -54,17 +58,79 @@ instance_create(0,0,Input);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//manipulate views from rooms
-// Div func = division w/o remainder
-// Since rooms are 256 wide - if you div by 256 the remainder = 0
-// multiply 0 by 256 - which snaps X coordinate to the top left of the room
-// same with vertical view
-target_xview = (obj_player.x div 256) * 256;
-target_yview = (obj_player.y div 176) * 176;
+            <string> /*
+ *
+ * This Object Event Manipulates the room and transitions from the first port (HUD) and second (MAP)
+ *
+ * @ht = height, @tgt = target, 'x' and 'y' correspond to their directions on the grid
+ * @div func = division without remainder 
+ *  {
+ *      Since rooms are 256 wide - if you div by 256 the remainder = 0
+ *      multiply 0 by 256 - which snaps X/Y coordinate to the top left of the room
+ *  }
+ */
 
-//Accesses move_toward() script
-view_xview[0] = move_toward(view_xview[0],target_xview,4);
-view_yview[0] = move_toward(view_yview[0],target_yview,4);
+switch(state) {
+
+    case "IN_LEVEL": {
+    // same with vertical view
+    target_xview = (obj_player.x div 256) * 256;
+    target_yview = (obj_player.y div 176) * 176;
+    
+    //Accesses move_toward() script
+    view_xview[0] = move_toward(view_xview[0],target_xview,4);
+    view_yview[0] = move_toward(view_yview[0],target_yview,4);
+    
+    if (Input.start) state = "MENU_TRANS";
+    break;
+    }
+case "MENU_TRANS": {
+        m_speed = 2;
+        hud_ht = 56;
+        level_ht = 176;
+        total_ht = hud_ht + level_ht;
+        
+        if (!menu_open) {
+            hud_y_tgt = 0;
+            hud_ht_tgt = total_ht;
+            lvl_y_tgt = total_ht;
+            lvl_ht_tgt = 0;
+            
+            if (view_hport[1] == total_ht) {
+                menu_open = true;
+                state = "IN_MENU";
+            }
+            
+        } else {
+            hud_y_tgt = level_ht;
+            hud_ht_tgt = hud_ht;
+            lvl_y_tgt = hud_ht;
+            lvl_ht_tgt = level_ht;
+            
+            if (view_hport[1] == hud_ht) {
+                menu_open = false;
+                state = "IN_LEVEL";
+            }
+        }
+        // Move_Toward() says 'Where are you now - where do you want to be - and how fast do you want to get there'
+        //hud
+        view_yview[1] = move_toward(view_yview[1], hud_y_tgt, m_speed);   
+        view_hport[1] = move_toward(view_hport[1], hud_ht_tgt, m_speed);
+        view_hview[1] = move_toward(view_hview[1], hud_ht_tgt, m_speed);
+        
+        //level 
+        view_hview[0] = move_toward(view_hview[0], lvl_ht_tgt, m_speed);
+        view_yport[0] = move_toward(view_yport[0], lvl_y_tgt, m_speed);
+        view_hport[0] = total_ht - view_hport[1];  
+        
+        break;
+    }
+    case "IN_MENU": {
+        if (Input.start) state = "MENU_TRANS";
+        break;
+    }
+
+}
 </string>
           </argument>
         </arguments>
