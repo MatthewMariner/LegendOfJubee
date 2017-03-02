@@ -29,7 +29,7 @@
 // Call parent events
 event_inherited();
 hp = 4;
-damage = 2;
+damage = 4;
 //Shooting Trigger
 timer = 0;
 //State is either moving or shooting

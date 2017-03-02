@@ -16,6 +16,8 @@
       <sprite>sprites\spr_player_attack_down</sprite>
     </sprites>
     <sprites name="items">
+      <sprite>sprites\spr_hearts</sprite>
+      <sprite>sprites\spr_heart_container</sprite>
       <sprite>sprites\spr_sword</sprite>
     </sprites>
     <sprites name="masks">
@@ -45,7 +47,6 @@
     <object>objects\obj_game</object>
     <object>objects\obj_player</object>
     <object>objects\Input</object>
-    <object>objects\obj_sword</object>
     <objects name="walls">
       <object>objects\obj_solid</object>
       <object>objects\obj_wall_top</object>
@@ -58,6 +59,12 @@
       <object>objects\obj_enemy_death</object>
       <object>objects\obj_par_enemy</object>
     </objects>
+    <objects name="items">
+      <object>objects\obj_sword</object>
+      <object>objects\obj_heart</object>
+      <object>objects\obj_heart_container</object>
+    </objects>
+    <object>objects\obj_menu</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_rooms</room>

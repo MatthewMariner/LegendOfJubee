@@ -30,8 +30,15 @@ vy = 0;
 player_speed = 2;
 timer = 0;
 state = "IDLE";
-//This way we can know which way the player object is facing ( 0-up, 1-right, 2-down, 3-left )
-facing = 0;
+facing = 0; //( 0-up, 1-right, 2-down, 3-left )
+
+
+iframes = 0;
+
+hp = 24; // 3 heart containers * 8 health points
+hp_containers = 3;
+hp_max_containers = 16;
+
 sprite_walk = spr_player_up;
 sprite_attack = spr_player_attack_up;
 </string>
@@ -56,7 +63,7 @@ sprite_attack = spr_player_attack_up;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>///Player States
 anim_speed = 0.2;
 
 //FINITE STATE MACHINE
@@ -173,6 +180,143 @@ switch (state) {
 
 //Check For Collision
 check_collision_obj(vx, vy, obj_solid);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// iFrame Timer
+
+if (iframes &gt; 0) {
+    iframes --;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_heart_container">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Adds Heart Container
+with (other) {
+    other.hp_containers = clamp(other.hp_containers + 1, 0, other.hp_max_containers);
+    instance_destroy();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_heart">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Collision With Hearts
+
+with (other) {
+    // Player.health must be bt 0 and health containers * 8
+    other.hp = clamp(other.hp + hp, 0, other.hp_containers*8);
+    instance_destroy();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_par_enemy">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///When Collide W/ Parent Enemy
+
+if (iframes == 0) {
+    iframes = 30;
+    //Makes health go down
+    hp -= other.damage;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (iframes &gt; 0 &amp;&amp; iframes mod 3 == 0) {
+  //doing nothing bc we dont want the sprite to show up  
+} else {
+    draw_self();
+}
 </string>
           </argument>
         </arguments>
