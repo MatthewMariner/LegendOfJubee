@@ -38,6 +38,7 @@
       <sprite>sprites\spr_title</sprite>
       <sprite>sprites\spr_waterfall</sprite>
       <sprite>sprites\spr_water_waves</sprite>
+      <sprite>sprites\spr_item_screen</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -100,6 +101,7 @@
       <object>objects\obj_title</object>
       <object>objects\obj_waterfall</object>
       <object>objects\obj_waterfall_waves</object>
+      <object>objects\obj_item_screen</object>
     </objects>
   </objects>
   <rooms name="rooms">
