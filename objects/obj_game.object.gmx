@@ -26,8 +26,10 @@
           <argument>
             <kind>1</kind>
             <string>init_game();
+//Initializes Variables For First Time
+state_init();
 
-state = "IN_LEVEL";
+
 menu_open = false;
 
 
@@ -70,6 +72,11 @@ instance_create(0,0,Input);
  *  }
  */
 
+ state_process(st_game_title);
+ 
+ 
+ 
+ /*
 switch(state) {
 
     case "IN_LEVEL": {
@@ -84,7 +91,7 @@ switch(state) {
     if (Input.start) state = "MENU_TRANS";
     break;
     }
-case "MENU_TRANS": {
+    case "MENU_TRANS": {
         m_speed = 2;
         hud_ht = 56;
         level_ht = 176;
@@ -131,6 +138,9 @@ case "MENU_TRANS": {
     }
 
 }
+*/
+
+
 </string>
           </argument>
         </arguments>

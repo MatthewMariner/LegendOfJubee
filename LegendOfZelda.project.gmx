@@ -35,17 +35,40 @@
     <background>background\bg_overworld_green</background>
     <background>background\bg_temp</background>
     <background>background\bg_temp_menu</background>
+    <backgrounds name="TEMP">
+      <background>background\bg_title</background>
+      <background>background\bg_select</background>
+      <background>background\bg_items</background>
+    </backgrounds>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\check_inputs_all.gml</script>
-    <script>scripts\init_game.gml</script>
-    <script>scripts\check_collision_obj.gml</script>
-    <script>scripts\move_toward.gml</script>
+    <scripts name="state_machine">
+      <script>scripts\state_init.gml</script>
+      <script>scripts\state_switch.gml</script>
+      <script>scripts\state_process.gml</script>
+    </scripts>
+    <scripts name="states">
+      <scripts name="game">
+        <script>scripts\st_game_title.gml</script>
+        <script>scripts\st_game_items.gml</script>
+        <script>scripts\st_game_select.gml</script>
+        <script>scripts\st_game_in_level.gml</script>
+        <script>scripts\st_game_menu_trans.gml</script>
+        <script>scripts\st_game_in_menu.gml</script>
+      </scripts>
+    </scripts>
+    <scripts name="utilities">
+      <script>scripts\check_inputs_all.gml</script>
+      <script>scripts\move_toward.gml</script>
+      <script>scripts\init_game.gml</script>
+      <script>scripts\check_collision_obj.gml</script>
+    </scripts>
   </scripts>
   <objects name="objects">
     <object>objects\obj_game</object>
     <object>objects\obj_player</object>
+    <object>objects\obj_menu</object>
     <object>objects\Input</object>
     <objects name="walls">
       <object>objects\obj_solid</object>
@@ -64,10 +87,12 @@
       <object>objects\obj_heart</object>
       <object>objects\obj_heart_container</object>
     </objects>
-    <object>objects\obj_menu</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_title</room>
     <room>rooms\rm_rooms</room>
+    <room>rooms\rm_items</room>
+    <room>rooms\rm_select</room>
     <room>rooms\rm_test</room>
   </rooms>
   <help>

@@ -1,0 +1,15 @@
+///Game Title State
+
+if (state_time > 5 && Input.start)
+{
+    room_goto(rm_select);
+    state_switch(st_game_select);
+}
+
+// State Timer - If timer is more than 5 seconds long...
+
+if (state_time > 5 * room_speed)
+{
+    room_goto(rm_items);
+    state_switch(st_game_items);
+}
