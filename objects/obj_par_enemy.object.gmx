@@ -73,8 +73,7 @@ iframes = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//decrement iframes
-if (iframes &gt; 0) {
+            <string>if (iframes &gt; 0) {
     iframes --;
 }
 
@@ -101,8 +100,7 @@ if (hp &lt;= 0) instance_destroy();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//As long as enemy isnt invulnerable - do something
-if (iframes == 0) {
+            <string>if (iframes == 0) {
     iframes = 30;
     hp -= other.damage;
 }
@@ -129,7 +127,7 @@ if (iframes == 0) {
           <argument>
             <kind>1</kind>
             <string>if (iframes &gt; 0 &amp;&amp; iframes mod 3 == 0) {
-  //doing nothing bc we dont want the sprite to show up  
+    
 } else {
     draw_self();
 }

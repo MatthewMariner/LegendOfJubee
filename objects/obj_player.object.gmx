@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -30,12 +30,11 @@ vy = 0;
 player_speed = 2;
 timer = 0;
 state = "IDLE";
-facing = 0; //( 0-up, 1-right, 2-down, 3-left )
-
+facing = 0; // 0 - up, 1 - right, 2 - down, 3 - left;
 
 iframes = 0;
 
-hp = 24; // 3 heart containers * 8 health points
+hp = 24;
 hp_containers = 3;
 hp_max_containers = 16;
 
@@ -63,44 +62,41 @@ sprite_attack = spr_player_attack_up;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Player States
-anim_speed = 0.2;
+            <string>anim_speed = 0.2;
 
-//FINITE STATE MACHINE
-switch (state) {
+switch(state) {
     case "ATTACK_SWORD_START": {
         image_speed = 0;
         vx = 0;
         vy = 0;
         timer = 15;
-        //Resets Sprite On State
         sprite_index = sprite_attack;
         state = "ATTACK_SWORD";
         break;
     }
     case "ATTACK_SWORD": {
         if (timer == 8) {
-            switch(facing) { //Image_Angle circle - right:0 | bottom:270 | left:180 | top:90
+            switch(facing) {
                 case 0: {
-                    with (instance_create(x, y-12, obj_sword) ) {
+                    with(instance_create(x, y-12, obj_sword) ) {
                         image_angle = 0;
                     }
                     break;
                 }
                 case 1: {
-                    with (instance_create(x+12, y, obj_sword) ) {
+                    with(instance_create(x+12, y, obj_sword) ) {
                         image_angle = 270;
                     }
                     break;
                 }
                 case 2: {
-                    with (instance_create(x, y+12, obj_sword) ) {
+                    with(instance_create(x, y+12, obj_sword) ) {
                         image_angle = 180;
                     }
                     break;
                 }
                 case 3: {
-                    with (instance_create(x-12, y, obj_sword) ) {
+                    with(instance_create(x-12, y, obj_sword) ) {
                         image_angle = 90;
                     }
                     break;
@@ -109,7 +105,7 @@ switch (state) {
         }
     
         if (timer &gt; 0) {
-            timer -=1;
+            timer -= 1;
         } else {
             state = "IDLE";
         }
@@ -117,8 +113,8 @@ switch (state) {
     }
     case "IDLE": {
         image_speed = 0;
-        //Resets Sprite On State
         sprite_index = sprite_walk;
+        
         vx = 0;
         vy = 0;
         check_inputs_all();
@@ -130,10 +126,11 @@ switch (state) {
         sprite_walk = spr_player_up;
         sprite_attack = spr_player_attack_up;
         sprite_index = sprite_walk;
+        
         image_xscale = 1;
-        vx = 0;
-        // Negative 1 because moving up is negative in the player axis
+        vx = align_to_grid(x, 8);
         vy = -1 * player_speed;
+        
         check_inputs_all();
         break;
     }
@@ -143,9 +140,11 @@ switch (state) {
         sprite_walk = spr_player_down;
         sprite_attack = spr_player_attack_down;
         sprite_index = sprite_walk;
+        
         image_xscale = 1;
-        vx = 0;
+        vx = align_to_grid(x, 8);
         vy = player_speed;
+        
         check_inputs_all();
         break;
     }
@@ -155,10 +154,11 @@ switch (state) {
         sprite_walk = spr_player_side;
         sprite_attack = spr_player_attack_side;
         sprite_index = sprite_walk;
-        //Reverses the sprite on the game - GLOBAL switch off -- Bool
+        
         image_xscale = 1;
         vx = -1 * player_speed;
-        vy = 0;
+        vy = align_to_grid(y, 8);
+        
         check_inputs_all();
         break;
     }
@@ -168,17 +168,16 @@ switch (state) {
         sprite_walk = spr_player_side;
         sprite_attack = spr_player_attack_side;
         sprite_index = sprite_walk;
-        //Reverses the sprite on the game - GLOBAL switch on
+        
         image_xscale = -1;
         vx = player_speed;
-        vy = 0;   
+        vy = align_to_grid(y, 8);
+        
         check_inputs_all();
         break;
     }
-
 }
 
-//Check For Collision
 check_collision_obj(vx, vy, obj_solid);
 </string>
           </argument>
@@ -200,10 +199,61 @@ check_collision_obj(vx, vy, obj_solid);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// iFrame Timer
-
+            <string>/// iframe timer
 if (iframes &gt; 0) {
     iframes --;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_room_warp">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>room_goto(other.room_dest);
+x = other.player_target_x;
+y = other.player_target_y;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_par_enemy">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// collide with enemy
+if (iframes == 0) {
+    iframes = 30;
+    hp -= other.damage;
 }
 </string>
           </argument>
@@ -227,7 +277,7 @@ if (iframes &gt; 0) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Adds Heart Container
+            <string>/// add heart container
 with (other) {
     other.hp_containers = clamp(other.hp_containers + 1, 0, other.hp_max_containers);
     instance_destroy();
@@ -254,41 +304,10 @@ with (other) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Collision With Hearts
-
+            <string>/// collide with hearts
 with (other) {
-    // Player.health must be bt 0 and health containers * 8
     other.hp = clamp(other.hp + hp, 0, other.hp_containers*8);
     instance_destroy();
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_par_enemy">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///When Collide W/ Parent Enemy
-
-if (iframes == 0) {
-    iframes = 30;
-    //Makes health go down
-    hp -= other.damage;
 }
 </string>
           </argument>
@@ -313,7 +332,7 @@ if (iframes == 0) {
           <argument>
             <kind>1</kind>
             <string>if (iframes &gt; 0 &amp;&amp; iframes mod 3 == 0) {
-  //doing nothing bc we dont want the sprite to show up  
+    
 } else {
     draw_self();
 }

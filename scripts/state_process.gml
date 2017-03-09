@@ -1,8 +1,7 @@
 ///state_process(state)
 
-if (state == 0)
-{
-    state = argument [0];
+if (state == 0) {
+    state = argument[0];
 }
 
 script_execute(state);

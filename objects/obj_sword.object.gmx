@@ -52,14 +52,11 @@ damage = 2;
             <string>if (timer &lt;= 9) {
     
     if (timer &gt; 7) {
-    // Whatever the direction the sword is facing, sets the object motion the opposite direction
-    // of the sword - so it creates a swinging animation
-    direction = (image_angle + 270) mod 360;
-    speed = 4;
+        direction = (image_angle + 270) mod 360;
+        speed = 4;
     }
     
     timer += 1;
-    
 } else {
     instance_destroy();
 }

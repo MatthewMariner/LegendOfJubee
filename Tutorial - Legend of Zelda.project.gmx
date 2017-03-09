@@ -20,16 +20,17 @@
       <sprite>sprites\spr_player_attack_down</sprite>
     </sprites>
     <sprites name="items">
+      <sprite>sprites\spr_sword</sprite>
       <sprite>sprites\spr_hearts</sprite>
       <sprite>sprites\spr_heart_container</sprite>
-      <sprite>sprites\spr_sword</sprite>
     </sprites>
-    <sprites name="masks">
+    <sprites name="mask">
       <sprite>sprites\spr_wall_mask</sprite>
+      <sprite>sprites\spr_warp_tile</sprite>
     </sprites>
     <sprites name="enemies">
       <sprites name="overworld">
-        <sprite>sprites\spr_octorok</sprite>
+        <sprite>sprites\spr_oktorok</sprite>
         <sprite>sprites\spr_projectile</sprite>
       </sprites>
       <sprite>sprites\spr_enemy_death</sprite>
@@ -70,16 +71,18 @@
     </scripts>
     <scripts name="utilities">
       <script>scripts\check_inputs_all.gml</script>
-      <script>scripts\move_toward.gml</script>
       <script>scripts\init_game.gml</script>
       <script>scripts\check_collision_obj.gml</script>
+      <script>scripts\move_toward.gml</script>
+      <script>scripts\align_to_grid.gml</script>
     </scripts>
   </scripts>
   <objects name="objects">
-    <object>objects\obj_game</object>
-    <object>objects\obj_player</object>
-    <object>objects\obj_menu</object>
-    <object>objects\Input</object>
+    <objects name="items">
+      <object>objects\obj_sword</object>
+      <object>objects\obj_heart</object>
+      <object>objects\obj_heart_container</object>
+    </objects>
     <objects name="walls">
       <object>objects\obj_solid</object>
       <object>objects\obj_wall_top</object>
@@ -87,15 +90,10 @@
     <objects name="enemies">
       <objects name="overworld">
         <object>objects\obj_projectile</object>
-        <object>objects\obj_octorok</object>
+        <object>objects\obj_oktorok</object>
       </objects>
       <object>objects\obj_enemy_death</object>
       <object>objects\obj_par_enemy</object>
-    </objects>
-    <objects name="items">
-      <object>objects\obj_sword</object>
-      <object>objects\obj_heart</object>
-      <object>objects\obj_heart_container</object>
     </objects>
     <objects name="title">
       <object>objects\obj_title</object>
@@ -103,13 +101,24 @@
       <object>objects\obj_waterfall_waves</object>
       <object>objects\obj_item_screen</object>
     </objects>
+    <objects name="system">
+      <object>objects\obj_menu</object>
+      <object>objects\obj_game</object>
+      <object>objects\Input</object>
+      <object>objects\obj_room_warp</object>
+    </objects>
+    <objects name="player">
+      <object>objects\obj_player</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_title</room>
-    <room>rooms\rm_rooms</room>
     <room>rooms\rm_items</room>
     <room>rooms\rm_select</room>
+    <room>rooms\rm_rooms</room>
     <room>rooms\rm_test</room>
+    <room>rooms\rm_Test1</room>
+    <room>rooms\rm_Test2</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

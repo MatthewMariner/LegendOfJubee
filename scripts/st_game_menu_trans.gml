@@ -25,7 +25,7 @@ if (!menu_open) {
         state_switch(st_game_in_level);
     }
 }
-// Move_Toward() says 'Where are you now - where do you want to be - and how fast do you want to get there'
+
 //hud
 view_yview[1] = move_toward(view_yview[1], hud_y_tgt, m_speed);   
 view_hport[1] = move_toward(view_hport[1], hud_ht_tgt, m_speed);
@@ -34,4 +34,4 @@ view_hview[1] = move_toward(view_hview[1], hud_ht_tgt, m_speed);
 //level 
 view_hview[0] = move_toward(view_hview[0], lvl_ht_tgt, m_speed);
 view_yport[0] = move_toward(view_yport[0], lvl_y_tgt, m_speed);
-view_hport[0] = total_ht - view_hport[1];  
+view_hport[0] = total_ht - view_hport[1];     

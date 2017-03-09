@@ -25,37 +25,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Draw Health Bar
+            <string>/// draw health bar
 
-if (instance_exists(obj_player)) 
-{
-    //On first loop draw on Y axis at 215
+if (instance_exists(obj_player)) {
     xt = 944;
     yt = 215;
-    
-    for (var i = 0; i &lt; obj_player.hp_containers; i++)
-    {
-        ht_index = 0; //image_index for hearts [EMPTY CONTAINER]
-        
-        if (i &gt; 7)
-        {
+    for (var i = 0; i &lt; obj_player.hp_containers; i++) {
+        ht_index = 0; // image_index for hearts
+        if (i &gt; 7) {
             xt = 880;
             yt = 206;
         }
-        
-        if (obj_player.hp &gt;= (i+1)*8)
-        {
-            ht_index = 2; //[FULL CONTAINER]
-        }
-        else if (obj_player.hp &gt;= (i+.5)*8)
-        {
-            ht_index = 1; // [HALF CONTAINER]
+        if (obj_player.hp &gt;= (i+1)*8) {
+            ht_index = 2;
+        } else if (obj_player.hp &gt;= (i+.5)*8) {
+            ht_index = 1;
         }
         
-        draw_sprite_ext(spr_hearts, ht_index, xt + i * 8, yt, 1, 1, 0, c_white, 1);
-        
+        draw_sprite_ext(spr_hearts, ht_index, xt + i * 8, yt, 1, 1, 0, c_white, 1); 
     }
-    
 }
 </string>
           </argument>

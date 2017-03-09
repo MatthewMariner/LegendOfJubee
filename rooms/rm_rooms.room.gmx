@@ -52,6 +52,23 @@
   </views>
   <instances>
     <instance objName="obj_player" x="352" y="256" name="inst_14397E3D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_menu" x="832" y="288" name="inst_3F06E2D2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_oktorok" x="432" y="256" name="inst_D13DC4DA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_oktorok" x="352" y="288" name="inst_7D57F0A0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_oktorok" x="304" y="208" name="inst_4C164044" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_oktorok" x="448" y="304" name="inst_81EA6FFF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_heart_container" x="304" y="416" name="inst_8C6240B8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_heart_container" x="352" y="432" name="inst_590B96E7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_heart_container" x="400" y="432" name="inst_D288EFDC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_heart_container" x="384" y="464" name="inst_B9B3BA59" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_heart_container" x="320" y="464" name="inst_5C98E5A9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_heart" x="112" y="224" name="inst_7702ADD1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_heart" x="176" y="240" name="inst_2233D988" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_heart" x="128" y="272" name="inst_1C02A67D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_heart" x="48" y="272" name="inst_DE3D187E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_heart" x="160" y="304" name="inst_137828A6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_heart" x="192" y="288" name="inst_3222877C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_heart" x="208" y="256" name="inst_A07399F4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_temp_menu" x="768" y="0" w="256" h="232" xo="0" yo="0" id="10000492" name="inst_029B9F27" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

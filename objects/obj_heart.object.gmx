@@ -25,10 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Init Variables
-
+            <string>/// init variables 
 image_speed = 0;
-//Goes to 3rd image index (since arrays start with 0)
 image_index = 2;
 hp = 8;
 </string>
