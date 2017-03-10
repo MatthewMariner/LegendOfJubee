@@ -55,7 +55,7 @@ button_a = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// check controlls
+            <string>/// check controls
 left = keyboard_check(vk_left);
 right = keyboard_check(vk_right);
 up = keyboard_check(vk_up);
@@ -64,6 +64,7 @@ button_b = keyboard_check_pressed(vk_enter);;
 button_a = keyboard_check_pressed(vk_space);
 start = keyboard_check_pressed(vk_control);
 select = keyboard_check_pressed(vk_alt);
+
 
 if (global.gamepad) {
     left = left || gamepad_button_check(0, gp_padl);

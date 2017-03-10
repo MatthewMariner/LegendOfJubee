@@ -1,4 +1,5 @@
 ///align_to_grid(val, alignTo);
+//Mod gives us remainder
 
 var val = argument0;
 var alignTo = argument1;

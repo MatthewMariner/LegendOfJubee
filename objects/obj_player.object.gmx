@@ -128,6 +128,8 @@ switch(state) {
         sprite_index = sprite_walk;
         
         image_xscale = 1;
+        //Velocity x direction &amp;&amp; velccity Y direction 
+        // align to what position, how many pixels
         vx = align_to_grid(x, 8);
         vy = -1 * player_speed;
         
