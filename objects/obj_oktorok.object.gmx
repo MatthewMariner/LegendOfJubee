@@ -34,11 +34,6 @@ state = "MOVING";
 facing = enum_facing.up;
 move_speed = .5;
 image_speed = .2;
-
-vx = 0;
-vy = 0;
-cx = 0;
-cy = 0;
 </string>
           </argument>
         </arguments>
@@ -115,16 +110,8 @@ switch(state) {
     }
 }
 
-cx += vx;
-cy += vy;
 
-vxNew = round(cx);
-vyNew = round(cy);
-
-cx = vx - vxNew;
-cy = vy - vyNew;
-
-if ( check_collision_obj(vxNew, vyNew, obj_solid) ) {
+if ( check_collision_obj(vx, vy, obj_solid) ) {
     facing = choose(enum_facing.up, enum_facing.right, enum_facing.down, enum_facing.left);
 }
 

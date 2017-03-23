@@ -27,6 +27,12 @@
             <kind>1</kind>
             <string>/// initialize game
 global.debug = false;
+global.surface_level = -1;
+global.surface_hud = -1;
+//Fixes menu transition - midpoint is between HUD and Level
+midpoint = 56;
+menu_open = false;
+display_set_gui_size(256, 232);
 init_game();
 
 state_init();
@@ -59,6 +65,41 @@ instance_create(0,0,Input);
           <argument>
             <kind>1</kind>
             <string>state_process(st_game_title);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///DRAWS THE LEVEL ON THE SURFACE/CANVAS
+
+if (surface_exists(global.surface_level))
+{
+    draw_surface_stretched(global.surface_level, 0, midpoint, 256, 176);
+}
+
+//DRAWS HUD
+
+if (surface_exists(global.surface_hud))
+{
+    draw_surface_stretched(global.surface_hud, 0, midpoint-232, 256, 232);
+}
 </string>
           </argument>
         </arguments>

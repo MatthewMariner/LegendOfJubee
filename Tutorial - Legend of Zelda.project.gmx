@@ -115,10 +115,7 @@
     <room>rooms\rm_title</room>
     <room>rooms\rm_items</room>
     <room>rooms\rm_select</room>
-    <room>rooms\rm_rooms</room>
-    <room>rooms\rm_test</room>
-    <room>rooms\rm_Test1</room>
-    <room>rooms\rm_Test2</room>
+    <room>rooms\rm_level</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

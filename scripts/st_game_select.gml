@@ -1,6 +1,6 @@
 audio_stop_sound(snd_music_intro);
 
 if (state_time > 5 && Input.start) {
-    room_goto(rm_rooms);
+    room_goto(rm_level);
     state_switch(st_game_in_level);
 }
