@@ -75,6 +75,7 @@
       <script>scripts\check_collision_obj.gml</script>
       <script>scripts\move_toward.gml</script>
       <script>scripts\align_to_grid.gml</script>
+      <script>scripts\string_to_array.gml</script>
     </scripts>
   </scripts>
   <objects name="objects">
@@ -106,6 +107,7 @@
       <object>objects\obj_game</object>
       <object>objects\Input</object>
       <object>objects\obj_room_warp</object>
+      <object>objects\obj_room</object>
     </objects>
     <objects name="player">
       <object>objects\obj_player</object>
